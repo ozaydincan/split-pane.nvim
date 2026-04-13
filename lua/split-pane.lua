@@ -354,6 +354,9 @@ end
 function M.setup(user_opts)
 	M.config = vim.tbl_deep_extend("force", vim.deepcopy(default_config), user_opts or {})
 
+	state.hidden_buf = nil
+	state.last_dir = nil
+
 	local km = M.config.keymaps
 	local map = function(lhs, rhs, desc)
 		vim.keymap.set("n", lhs, rhs, { desc = "[SP] " .. desc, noremap = true, silent = true })
